@@ -23,4 +23,4 @@ console.log(c) // 256
 
 // What is the best way to use between ** and Math.pow()?
 
-// 🤞🤞 if you are working with BigInt then double astrix is the best way to use because Math.pow() does not support BigInt 🤞🤞
+// 🤞🤞 if you are working with BigInt then double astrix is the best way to use because Math.pow() does not support BigInt 🤞🤞 
