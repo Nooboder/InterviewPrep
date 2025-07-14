@@ -12,7 +12,7 @@ console.log(a) // 16
 const b = 4 ** 4
 
 console.log(b) // 256
-
+// For example, 4 ** 4 means 16 raised to the power of 2
 // this is exactly same as 
 const c = Math.pow(4, 4)
 
@@ -23,4 +23,4 @@ console.log(c) // 256
 
 // What is the best way to use between ** and Math.pow()?
 
-// 🤞🤞 if you are working with BigInt then double astrix is the best way to use because Math.pow() does not support BigInt 🤞🤞 
+// 🤞🤞 if you are working with BigInt then double astrix is the best way to use because Math.pow() does not support BigInt 🤞🤞
