@@ -1,0 +1,33 @@
+<!-- 11. Event Delegation  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Event Delegation</title>
+</head>
+
+<body>
+  <h2>
+   JaveScript Event Delegation 
+  </h2>
+  <div id="parent">
+    <button class="btn">Button 1</button>
+    <button class="btn">Button 2</button>
+    <button class="btn">Button 3</button>
+  </div>
+  <script>
+    document.getElementById("parent").addEventListener("click", (event)=>{
+  
+  if(event.target.classList.contains("btn")){
+    alert(`You Clicked ${event.target.innerText}`)
+  }
+  })
+  </script>
+</body>
+
+</html>

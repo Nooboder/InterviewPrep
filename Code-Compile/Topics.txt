@@ -1,0 +1,186 @@
+Java-Script 👍
+
+1.De-structuring with Default values
+
+2.Arrow function/Normal function (i) , (ii)
+
+3.Object.freeze and Object.seal
+
+4. Trick Question 1 **
+
+5. Function Constructor 
+
+6. Find Unique and Duplicate element from an array  
+
+7. Trick Question 2 *
+
+8. Array copyWithin operation
+
+9. Promise
+
+10. Class, Object, Constructor
+
+11. Event Delegation 
+
+12.Otp Generate
+
+13. CSS Design Pattern(BEM Structure)
+
+14. ENUM
+
+15. Async & Await
+
+16. Truthy and Falsy Values
+
+17. SET Method (remove the duplicate or repeated values from an array use Set method).
+
+18. Short Method
+
+19. Closure, Lexical scope
+
+20. Object/ Object.keys/for in loop/ Object PROTOTYPE
+
+21. Rest & Spread Operator
+
+22. Post & Pre Increment
+
+23. Trick Question 3  *****
+
+24. Interviewer Question Multiple (Bind method) *****  
+
+25. Trick Question 4 and Solution  **
+
+26. Trick Question 5 and Solution  **
+
+27. Trick Question 6 and Solution  **
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
