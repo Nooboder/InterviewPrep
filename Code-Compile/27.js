@@ -104,3 +104,19 @@ OUTPUT:
 // currentI stores the value of i at each step (0, 1, 2, 3, 4).
 
 // When setTimeout runs, it logs the correct currentI.
+
+
+
+
+
+
+
+// const ar = ["mango", "banana", "strawberry", "apple", "orange"];
+
+
+
+// const res = ar.sort(() => Math.random() - 0.5);
+
+// console.log(res);
+
+
