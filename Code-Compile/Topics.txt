@@ -54,23 +54,36 @@ Java-Script 👍
 
 27. Trick Question 6 and Solution  **
 
+28. Filter Method.
+
+29. How things worked on string and boolean?
 
 
+30. Total price to pay with single line of code .***** Reduce method
+
+31. Trick Question ******,
+
+32. Clear Interval, SET Interval, SET Timeout how it works give an example ?
+
+33. let , var , const 
 
 
+34. Array Find method 
+
+35. split, map, filter , join 
+
+36.dynamic object properties 
+
+37. optional chaining, nullish coalasing operator
+
+38. code snippet question .. (Object destructuring)
+
+39. slice , splice 
+
+40. refractor the code 
 
 
-
-
-
-
-
-
-
-
-
-
-
+41.code snippet *******
 
 
 
