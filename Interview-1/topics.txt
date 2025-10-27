@@ -1,0 +1,289 @@
+---------------------------------------------------------------------------------------------------
+🧭1. 𝗙𝗶𝘅𝗲𝗱 𝗣𝗼𝘀𝗶𝘁𝗶𝗼𝗻 𝗣𝗿𝗼𝗽𝗲𝗿𝘁𝘆. 𝗛𝗼𝘄 𝗱𝗼𝗲𝘀 𝗶𝘁 𝘄𝗼𝗿𝗸? 𝗮𝗻𝗱 𝗪𝗛𝗬 ? 𝗶𝘀 𝗶𝘁 𝗿𝗲𝗹𝗮𝘁𝗶𝘃𝗲 𝘁𝗼 𝗮𝗹𝗹 𝗰𝗮𝘀𝗲𝘀 𝗼𝗿 𝗮𝗻𝘆 𝗼𝘁𝗵𝗲𝗿 𝗰𝗮𝘀𝗲?
+---------------------------------------------------------------------------------------------------
+
+position: fixed means an element is positioned relative to the viewport, not relative to any parent container or scrollable element.
+
+✅ Key point:
+A fixed element stays in the same position on the screen even when the user scrolls the page.
+
+✅ position: fixed is viewport-based because it is meant for UI elements that must stay visible regardless of scroll or parent layout — like headers, chat buttons, or floating nav bars.
+
+✅ Yes, position: fixed is always relative to the viewport — meaning it stays pinned to the visible browser area, not the document or parent container.
+
+⚠️ BUT (important!)
+
+There’s one major exception:
+When any ancestor element has a CSS transform, filter, or perspective applied.
+
+In that case 👇
+The fixed element becomes relative to that transformed ancestor — not to the viewport.
+
+✅ So:
+
+position: fixed is usually relative to the viewport,
+except when an ancestor creates a new containing block (via transform, filter, or perspective).
+
+
+-------------------------------------------
+🧭2. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝗙𝗶𝘅𝗲𝗱 𝗮𝗻𝗱 𝗮𝗯𝘀𝗼𝗹𝘂𝘁𝗲 ?
+-------------------------------------------
+
+| Feature                | `position: absolute`                                                                 | `position: fixed`                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| **Position Reference** | Relative to the **nearest positioned ancestor** (`relative`, `absolute`, or `fixed`) | Relative to the **viewport** (browser window)                      |
+| **Scroll Behavior**    | Moves **with the page** when you scroll                                              | **Stays in the same position** on screen during scroll             |
+| **Effect on Layout**   | Removed from the normal document flow                                                | Removed from the normal document flow                              |
+| **Common Use Cases**   | Tooltips, pop-ups inside containers, image overlays                                  | Sticky headers, floating buttons, chat widgets, modals             |
+| **Parent Dependency**  | Depends on parent’s positioning                                                      | Independent of parent — always sticks to viewport                  |
+| **Z-Index Control**    | Can be layered using `z-index` relative to parent stacking context                   | Can be layered using `z-index` relative to global stacking context |
+| **Performance Impact** | Normal (depends on parent context)                                                   | Slightly higher (always re-renders on scroll if animated)          |
+| **Example Code**       | `position: absolute; top: 20px; left: 30px;`                                         | `position: fixed; top: 20px; left: 30px;`                          |
+
+
+🧠In Simple Terms
+
+absolute → “Stick to my parent.”
+fixed → “Stick to the screen.”
+
+---------------------------------------------------------------------------------------------------------------------------------------------------- 
+🧭3. 𝗪𝗲 𝗵𝗮𝘃𝗲 𝗺𝗮𝗻𝘆 𝘁𝗮𝗴𝘀 𝗶𝗻 𝗵𝘁𝗺𝗹. 𝘀𝗼 𝘆𝗼𝘂𝗿 𝗻𝗮𝗺𝗲 𝗶𝘀 𝘀𝗮𝗽𝘁𝗮. 𝘄𝗶𝗹𝗹 𝗶𝘁 𝘄𝗼𝗿𝗸 𝗮𝘀 𝗮 𝘁𝗮𝗴? 𝘄𝗶𝗹𝗹 𝗶𝘁 𝘄𝗼𝗿𝗸 𝗼𝗿 𝗴𝗶𝘃𝗲 𝗮𝗻𝘆 𝗲𝗿𝗿𝗼𝗿 ? 𝘄𝗵𝗮𝘁 𝗶𝘁'𝘀 𝗱𝗶𝘀𝗽𝗹𝗮𝘆 𝘁𝘆𝗽𝗲 ? 𝗶𝗳 𝗶𝘁 𝘄𝗼𝗸 𝗶𝘀 𝗶𝘁 𝘄𝗼𝗿𝗸 𝗮𝘀 𝗮 𝘀𝗽𝗮𝗻 𝗼𝗿 𝗱𝗶𝘃 ?
+---------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+
+✅ Will it work?
+
+Yes — it will work in HTML!
+HTML does not throw an error for unknown tags.
+Browsers are designed to be forgiving, so they’ll render unknown elements instead of crashing.
+
+
+
+⚙️ Why does it work?
+
+Because modern browsers use the HTML5 parsing model, where unknown or custom tags are treated as inline elements by default.
+
+
+
+🎨 What’s its display type?
+
+By default → inline
+
+✅ Display type → display: inline
+
+
+
+🧠 Is it like <span> or <div>?
+
+It behaves like a <span> (inline element), not a <div> (block element).
+
+However, you can change it with CSS if you want:
+
+sapta {
+  display: block;
+}
+
+
+Then it will behave like a <div>.
+
+
+-------------------------------------
+🧭4. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝘀𝗽𝗮𝗻 & 𝗱𝗶𝘃 ?
+------------------------------------
+
+| Feature                         | `<div>`                                                      | `<span>`                                              |
+| ------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
+| **Type of element**             | Block-level element                                          | Inline element                                        |
+| **Default display property**    | `display: block`                                             | `display: inline`                                     |
+| **Occupies space**              | Takes up the **full width** available (starts on a new line) | Takes up **only as much width as its content**        |
+| **Line break behavior**         | Always starts on a **new line**                              | Does **not** start on a new line                      |
+| **Usage**                       | Used to group **larger sections or containers** of content   | Used to style **specific text or small inline parts** |
+| **Common Use Case**             | Page layout, containers, wrappers, sections                  | Highlight words, change color, or style part of text  |
+| **Can contain block elements?** | ✅ Yes                                                        | ❌ No (only inline elements)                           |
+| **Example Display**             | Like a box or section                                        | Like a word or phrase                                 |
+| **Default CSS**                 | `display: block;`                                            | `display: inline;`                                    |
+
+
+----------------------------------------
+🧭5. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝗜𝗻𝗹𝗶𝗻𝗲 & 𝗕𝗹𝗼𝗰𝗸 ?
+--------------------------------------- 
+
+| Feature                  | 🧩 **Block Elements**                                                            | ✨ **Inline Elements**                                                             |
+| ------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Layout Behavior**      | Starts on a **new line** and takes **full width** available (100%)               | Stays **in the same line** with other elements                                    |
+| **Width / Height**       | Can set **width** and **height** using CSS                                       | Cannot set **width** or **height** (depends on content size)                      |
+| **Margin / Padding**     | All sides (`top`, `bottom`, `left`, `right`) work                                | Only `left` and `right` margins/paddings affect layout (top/bottom often ignored) |
+| **Line Break**           | Always starts on a **new line**                                                  | Does **not** start on a new line                                                  |
+| **Content Wrapping**     | Occupies the whole line                                                          | Wraps **only around its content**                                                 |
+| **Default Display Type** | `display: block;`                                                                | `display: inline;`                                                                |
+| **Common Examples**      | `<div>`, `<p>`, `<h1>–<h6>`, `<section>`, `<header>`, `<footer>`, `<ul>`, `<li>` | `<span>`, `<a>`, `<strong>`, `<em>`, `<b>`, `<i>`, `<label>`                      |
+| **Nested Elements**      | Can contain block or inline elements                                             | Should contain only inline content (not block elements)                           |
+| **Typical Use Case**     | Structure/layout containers                                                      | Styling small parts of text or inline content                                     |
+
+
+✅ In short:
+
+Block elements = large boxes → used for page layout and structure.
+
+Inline elements = small boxes → used for styling text or inline parts inside blocks.
+
+
+
+------------------------------------------------------------------
+🧭6. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝗣𝗼𝘀𝗶𝘁𝗶𝗼𝗻 𝗮𝗯𝘀𝗼𝗹𝘂𝘁𝗲 𝗮𝗻𝗱 𝗽𝗼𝘀𝗶𝘁𝗶𝗼𝗻 𝗥𝗲𝗹𝗮𝘁𝗶𝘃𝗲 ?
+------------------------------------------------------------------
+
+| Feature                                          | 🧭 **position: relative**                                          | 📍 **position: absolute**                                                                                |
+| ------------------------------------------------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **Position Reference**                           | Moves relative to **its original (normal) position** in the layout | Positions relative to the **nearest positioned ancestor** (`relative`, `absolute`, `fixed`, or `sticky`) |
+| **Effect on Document Flow**                      | ✅ Stays **in the flow** (other elements don’t move)                | ❌ **Removed from the flow** (other elements act as if it doesn’t exist)                                  |
+| **Offset Properties (top, left, right, bottom)** | Move the element **relative to its normal position**               | Position the element **based on the ancestor’s coordinate system**                                       |
+| **Space Reservation**                            | Keeps its **original space** reserved                              | Does **not reserve** any space — overlaps other elements                                                 |
+| **Typical Use Case**                             | Slight adjustments, fine-tuning placement                          | Precise positioning (tooltips, overlays, popups, etc.)                                                   |
+| **Scroll Behavior**                              | Moves with page scroll                                             | Moves with the page scroll (unless inside fixed parent)                                                  |
+| **Example**                                      | `position: relative; top: 10px; left: 10px;` → shifts slightly     | `position: absolute; top: 0; left: 0;` → locks to corner of parent                                       |
+| **Parent Dependency**                            | Independent of parent (uses itself as reference)                   | Depends on **nearest ancestor with position set**                                                        |
+
+
+
+✅ In short:
+relative = moves based on itself, keeps its space.
+
+absolute = moves based on parent, removes its space.
+
+
+
+
+
+-----------------------------------------------------
+🧭7. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝗶𝗳 𝗲𝗹𝘀𝗲 & 𝗧𝗲𝗿𝗻𝗮𝗿𝘆 𝗼𝗽𝗲𝗿𝗮𝘁𝗼𝗿 ?
+------------------------------------------------------
+
+
+| Feature          | 🧩 **if...else Statement**                                            | ⚡ **Ternary Operator (`? :`)**                                            |
+| ---------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Type**         | Control **statement**                                                 | **Expression** (returns a value)                                          |
+| **Syntax**       | Multi-line syntax using `if`, `else if`, `else` keywords              | Single-line shorthand using `condition ? valueIfTrue : valueIfFalse`      |
+| **Return Value** | Does **not** return a value directly (used for executing code blocks) | Returns a **value** that can be stored in a variable or rendered directly |
+| **Use Case**     | When you need to execute **multiple lines or complex logic**          | When you need a **quick one-line conditional value**                      |
+| **Readability**  | Easier to read for long conditions                                    | Cleaner for short, simple checks                                          |
+| **Nesting**      | Easier to handle nested conditions                                    | Nested ternaries become **hard to read**                                  |
+| **Example**      | `js if (age >= 18) { msg = "Adult"; } else { msg = "Minor"; } `       | `js msg = age >= 18 ? "Adult" : "Minor"; `                                |
+| **Performance**  | Practically same performance                                          | Practically same performance                                              |
+
+
+-----------------------------------------------------
+🧭8. 𝗗𝗶𝗳𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗯𝗲𝘁𝘄𝗲𝗲𝗻 𝗶𝗳 𝗦𝘁𝗮𝘁𝗲𝗺𝗲𝗻𝘁 & 𝗘𝘅𝗽𝗿𝗲𝘀𝘀𝗶𝗼𝗻 ?
+------------------------------------------------------
+
+
+| Feature                  | 🧩 **Statement**                                                | ⚡ **Expression**                                                          |
+| ------------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Definition**           | A line of code that **performs an action**                      | A piece of code that **produces (returns) a value**                       |
+| **Return Value**         | ❌ Does **not** return a value                                   | ✅ Always **returns a value**                                              |
+| **Usage**                | Used to **control flow**, declare variables, or execute logic   | Used wherever a **value is expected** (assignments, JSX, etc.)            |
+| **Examples**             | `if`, `for`, `while`, `switch`, `return`, variable declarations | `5 + 10`, `"hello"`, `a * b`, `x > 5`, function calls that return a value |
+| **Placement**            | Cannot be used directly inside JSX or function parameters       | Can be used directly in JSX or anywhere a value is needed                 |
+| **Evaluated By**         | Executes a **command**                                          | **Evaluates** to something (number, string, boolean, etc.)                |
+| **Example in JS**        | `if (x > 10) { console.log("Big"); }`                           | `x > 10` or `"Hello".toUpperCase()`                                       |
+| **Example in React JSX** | ❌ `{ if (x) <div>Hi</div> }` → Invalid                          | ✅ `{ x ? <div>Hi</div> : <div>Bye</div> }` → Valid                        |
+| **Purpose**              | Tell the program **what to do**                                 | Tell the program **what value to use**                                    |
+
+
+✅ Simple Trick to Remember:
+
+👉 If you can print it (e.g., console.log(...)), it’s an expression.
+👉 If it controls the program or doesn’t return a value, it’s a statement.
+
+
+
+-----------------------------------------------------
+🧭9. 𝗦𝗵𝗮𝗹𝗹𝗼𝘄 𝗖𝗼𝗽𝘆 𝗮𝗻𝗱 𝗗𝗲𝗲𝗽 𝗖𝗼𝗽𝘆 𝗶𝗻 𝗝𝗦 ?
+------------------------------------------------------
+
+| Feature                             | 🧩 **Shallow Copy**                                                  | 🌊 **Deep Copy**                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Definition**                      | Copies only the **first level** of an object or array                | Copies **all levels** — including nested objects                                                        |
+| **Nested Objects**                  | 🧠 Still share references to the **same inner objects**              | 🧠 Create **completely new copies** of all nested objects                                               |
+| **Effect of Change in Nested Data** | ✅ Changes affect **both copies** (since inner references are shared) | ❌ Changes affect **only the copied object**, not the original                                           |
+| **Performance**                     | ⚡ Faster (less memory, shallow only)                                 | 🐢 Slower (copies everything recursively)                                                               |
+| **Use Case**                        | When nested references are fine (or data is flat)                    | When you want **complete separation** from original data                                                |
+| **Techniques**                      | `Object.assign({}, obj)`<br>`spread {...obj}`<br>`Array.slice()`     | `structuredClone(obj)` ✅<br>`JSON.parse(JSON.stringify(obj))`<br>or libraries like `lodash.cloneDeep()` |
+| **Example Behavior**                | Changes in nested objects reflect in both                            | Deeply independent copies — no shared data                                                              |
+
+
+
+🧠 Example
+🪞 Shallow Copy
+
+const user = {
+  name: "Sapta",
+  address: { city: "Kolkata" }
+};
+
+// Shallow copy
+const copyUser = { ...user };
+
+copyUser.address.city = "Delhi";
+
+console.log(user.address.city); // Output: "Delhi" ❗ (shared reference)
+
+
+🌊 Deep Copy
+const user = {
+  name: "Sapta",
+  address: { city: "Kolkata" }
+};
+
+// Deep copy using JSON method
+const deepCopyUser = JSON.parse(JSON.stringify(user));
+
+deepCopyUser.address.city = "Delhi";
+
+console.log(user.address.city); // Output: "Kolkata" ✅ (completely separate)
+
+
+🧩 Modern Best Practice (ES2023)
+
+Use the new structuredClone() API (recommended):
+
+const deepCopy = structuredClone(user);
+
+
+✅ Works perfectly for nested data
+❌ Doesn’t support functions, DOM nodes, or special objects like Map, Set (for now).
+
+
+
+---------------------
+🧭10.𝗖𝗹𝗼𝘀𝘂𝗿𝗲𝘀 𝗶𝗻 𝗝𝗦 ?
+---------------------
+
+🧠 Definition
+
+A closure is created when a function “remembers” the variables from its lexical (outer) scope, even after that outer function has finished executing.
+
+
+🕵️ Example – Private Variable (Encapsulation)
+function createUser() {
+  let name = "Sapta";
+
+  return {
+    getName() {
+      return name;
+    },
+    setName(newName) {
+      name = newName;
+    }
+  };
+}
+
+const user = createUser();
+console.log(user.getName()); // "Sapta"
+user.setName("Singha");
+console.log(user.getName()); // "Singha"
+
+
+💡 Here, name is private — it cannot be accessed directly outside.
+Only the inner functions can access or modify it.
+👉 This is closure-based data encapsulation (like private variables in OOP).
