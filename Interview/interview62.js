@@ -83,11 +83,12 @@
 // const numbers = [1, 2, 3, 4];
 // const doubled = numbers.map(num => num * 2);
 // const res = numbers.map(num => num > 2);
+// const result = numbers.map(num => num = 2);
 
 // console.log(doubled); // [2, 4, 6, 8]
 // console.log(numbers); // [1, 2, 3, 4] (original unchanged)
 // console.log(res); // [false, false, true, true] (original unchanged)
-
+// console.log(result); // [2, 2, 2, 2] (original unchanged)
 
 
 // 🧩 1️⃣ Array.map() — Transform elements
