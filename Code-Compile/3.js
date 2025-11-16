@@ -15,7 +15,7 @@ person.city = "Kolkata"
 
 // delete
 
-delete person;
+// delete person;
 
 console.log(person)
 

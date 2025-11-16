@@ -19,4 +19,4 @@ console.log(arr)
 // output : [ 3, 4, 3, 4, 5, 6 ]
 
 
-//  arr.copyWithin(target index, start index,  end index);
+//  arr.copyWithin(target index, start index, (stop before) end index);

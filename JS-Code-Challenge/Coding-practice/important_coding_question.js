@@ -234,3 +234,83 @@ const originalArray = [1, 2, 3, 4, 5, 6];
 removeAlternateElements(originalArray);
 console.log(originalArray); // Output: [1, 3, 5]
 
+
+
+
+// 11. Given an array of objects, group them by a specified property.
+const obj = [{
+    key: 'sample1',
+    data: 'data1'
+},
+{
+    key: 'sample1',
+    data: 'data1'
+},
+{
+    key: 'sample2',
+    data: 'data2'
+},
+{
+    key: 'sample1',
+    data: 'data1'
+},
+{
+    key: 'sample3',
+    data: 'data1'
+},
+{
+    key: 'sample4',
+    data: 'data1'
+}
+]
+
+
+// const output = {
+// "sample1" : [
+//     {
+//         key:'sample1',
+//         data: 'data1'
+//     },
+//         {
+//         key:'sample1',
+//         data: 'data1'
+//     },
+//         {
+//         key:'sample1',
+//         data: 'data1'
+//     }
+//     ]
+//     'sample2' : [],
+//     'sample3' : [],
+//     'sample4' : []
+// }
+
+
+
+
+// const output = obj.reduce((acc, curr) => {
+
+//   if (!acc[curr.key]) acc[curr.key] = [];
+
+//   acc[curr.key].push(curr);
+//   return acc;
+// }, {});
+
+
+// obj.forEach(item => {
+//   if (!output[item.key]) output[item.key] = [];
+// });
+
+// console.log(output);
+
+
+// another method
+
+
+const output = obj.reduce((a, c) => ((a[c.key] ??= []).push(c), a), {});
+
+Object.keys(output).forEach(k => {
+  if (output[k].length === 1) output[k] = [];
+});
+
+console.log(output);
