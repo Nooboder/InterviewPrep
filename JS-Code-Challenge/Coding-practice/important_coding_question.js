@@ -314,3 +314,26 @@ Object.keys(output).forEach(k => {
 });
 
 console.log(output);
+
+
+
+// count the frequency of a string 
+
+let str = "hello my name is sapta"
+
+let fre = {};
+
+for(let index of str){
+    if(fre[index]){
+        fre[index]++;
+    }
+    else{
+fre[index]= 1
+    }
+    
+}
+
+console.log(fre);
+
+
+//
