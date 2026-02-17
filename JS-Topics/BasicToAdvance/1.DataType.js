@@ -1,8 +1,26 @@
 // JAVASCRIPT IS A INTEPRETED & COMPILER LANGUAGE.
 
+// 🔹 Step 1: Compilation
+
+// The engine first:
+// Parses the code
+// Converts it into bytecode
+// Uses Just-In-Time (JIT) compilation
+// Compiles frequently used parts into optimized machine code
+
+// 🔹 Step 2: Execution
+
+// Then:
+// The compiled code runs on your machine
+// So technically:
+// JavaScript is compiled just before execution (JIT compilation).
+
+
+
+
 // DATATYPES:
 
-// 1. PRIMITIVE DATATYPES:  
+// 1. PRIMITIVE DATATYPES:
 // ✔ Primitive = immutable values
 // ✔ Stored directly in memory (not by reference)
 
@@ -446,7 +464,7 @@
 
 // 26. Output?
 // let x;
-// console.log(x++); 
+// console.log(x++);
 
 
 // x is undefined.
