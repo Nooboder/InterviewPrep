@@ -1,0 +1,331 @@
+⚠️ Tricky Output Questions (Asked in Deloitte / PwC)
+❓ Q1: Closure Trap
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+
+👉 Output?
+Answer: 3 3 3
+
+👉 Fix:
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+❓ Q2: Event Loop Trap
+console.log("start");
+
+setTimeout(() => console.log("timeout"), 0);
+
+Promise.resolve().then(() => console.log("promise"));
+
+console.log("end");
+
+👉 Output:
+
+start
+end
+promise
+timeout
+
+👉 WHY?
+
+Promise → microtask (higher priority)
+setTimeout → macrotask
+❓ Q3: this Puzzle (Very tricky)
+const obj = {
+  name: "Sapta",
+  greet: function() {
+    console.log(this.name);
+  }
+};
+
+const fn = obj.greet;
+fn();
+
+👉 Output: undefined
+
+👉 WHY?
+
+this lost (global context)
+
+👉 Fix:
+
+fn.bind(obj)();
+❓ Q4: Arrow Function Trap
+const obj = {
+  name: "Sapta",
+  greet: () => {
+    console.log(this.name);
+  }
+};
+
+obj.greet();
+
+👉 Output: undefined
+
+👉 WHY?
+
+Arrow function doesn’t have its own this
+💻 Practical Coding Questions
+✅ Debounce (VERY IMPORTANT)
+function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+✅ Throttle
+function throttle(fn, limit) {
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
+}
+⚛️ 2. React (Most Critical for You)
+🔥 Must-Know Topics
+Virtual DOM
+Reconciliation
+Hooks (deep understanding)
+State vs Props
+Controlled vs Uncontrolled
+Context API
+Performance Optimization
+⚠️ React Interview Traps
+❓ Q1: Stale Closure (VERY IMPORTANT)
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  setInterval(() => {
+    console.log(count);
+  }, 1000);
+}, []);
+
+👉 Output: always 0
+
+👉 Fix:
+
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(prev => prev + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+❓ Q2: useEffect Dependency Trap
+useEffect(() => {
+  fetchData();
+}, []);
+
+👉 Question: What if fetchData changes?
+
+👉 Answer:
+
+Add dependency OR wrap in useCallback
+❓ Q3: Key Prop Trap
+{list.map((item, index) => (
+  <div key={index}>{item}</div>
+))}
+
+👉 Problem:
+
+Wrong re-rendering
+Use unique ID instead
+💻 Practical React Questions
+✅ Build Custom Hook
+function useDebounce(value, delay) {
+  const [debounced, setDebounced] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(timer);
+  }, [value]);
+
+  return debounced;
+}
+✅ Optimize Component
+
+👉 Techniques:
+
+React.memo
+useMemo
+useCallback
+🧠 3. System Design (Asked in JPMorgan)
+🔥 Questions
+Design a search autocomplete (debounce + API)
+Design infinite scroll
+Design chat system (you already worked with stream.io 🔥)
+✅ Example: Infinite Scroll Logic
+const observer = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    loadMore();
+  }
+});
+🎯 4. Real Interview Questions (VERY HIGH CHANCE)
+From Deloitte / PwC / EY
+Difference between == and ===
+Deep copy vs shallow copy
+What happens when you type a URL?
+Event delegation
+LocalStorage vs SessionStorage
+From JPMorgan (More Deep)
+Implement Promise from scratch
+Polyfills (map, filter, reduce)
+Memory leaks in React
+How React batching works
+💣 5. Hard-Level Questions (Most People Fail)
+❓ Combined Trap
+function outer() {
+  let count = 0;
+
+  return {
+    increment: function () {
+      count++;
+      console.log(count);
+    },
+    decrement: () => {
+      count--;
+      console.log(count);
+    }
+  };
+}
+
+const fn = outer();
+fn.increment(); // ?
+fn.decrement(); // ?
+
+👉 Output:
+
+1
+0
+
+👉 WHY:
+
+closure + arrow this + shared state
+
+
+
+
+
+
+
+
+
+
+🧠 1. JavaScript Core (MOST ASKED – 15 Questions)
+🔥 Output + Concept Based
+What is the output?
+console.log(typeof null);
+Difference between == and === with examples?
+What is hoisting? Explain with var, let, const.
+What will be the output?
+console.log(a);
+var a = 10;
+Explain closure with a real example.
+Output?
+function x() {
+  for (var i = 1; i <= 3; i++) {
+    setTimeout(() => console.log(i), i * 1000);
+  }
+}
+x();
+What is event loop? Explain microtask vs macrotask.
+Output?
+Promise.resolve().then(() => console.log(1));
+setTimeout(() => console.log(2), 0);
+console.log(3);
+What is this in JavaScript?
+Output?
+const obj = {
+  name: "A",
+  getName: function() {
+    return this.name;
+  }
+};
+const fn = obj.getName;
+console.log(fn());
+⚠️ Deep Concept
+Difference between shallow copy & deep copy?
+How does prototypal inheritance work?
+What is debounce vs throttle?
+What are promises? States?
+Difference between async/await and promises?
+⚛️ 2. React (VERY HIGH PRIORITY – 15 Questions)
+🔥 Core Concepts
+What is Virtual DOM?
+What is reconciliation?
+Difference between state and props?
+Controlled vs uncontrolled components?
+What are hooks?
+⚠️ Advanced / Trap Questions
+Why useEffect runs twice in Strict Mode?
+What is stale closure problem?
+Output?
+const [count, setCount] = useState(0);
+
+useEffect(() => {
+  setInterval(() => {
+    console.log(count);
+  }, 1000);
+}, []);
+How to optimize performance in React?
+Difference between useMemo and useCallback?
+💣 Real Interview Traps
+Why should we not use index as key?
+What happens when state updates?
+Explain React lifecycle (functional vs class).
+What causes re-render?
+How does React batching work?
+💻 3. Coding Questions (MOST IMPORTANT – 10 Questions)
+🔥 Must Practice
+Implement debounce function.
+Implement throttle function.
+Polyfill for map.
+Polyfill for reduce.
+Flatten array
+[1, [2, [3, 4]], 5]
+⚠️ Medium Level
+Find duplicate elements in array.
+Reverse a string without built-in methods.
+Implement LRU cache (basic level).
+Group array of objects by key.
+Implement promise from scratch (basic).
+🧪 4. Debugging / Practical (VERY REAL – 5 Questions)
+Why React app is re-rendering too much?
+Memory leak in useEffect — how to fix?
+API calling multiple times — why?
+Fix this:
+useEffect(() => {
+  fetchData();
+});
+Why state not updating immediately?
+🏗️ 5. System Design (Frontend Focus – 3 Questions)
+Design autocomplete search (debounce + API).
+Design infinite scroll.
+Design reusable component library.
+🌍 6. Real-World / Behavioral (2 Questions)
+Tell me about a performance issue you fixed.
+Explain a challenging bug you solved.
+🎯 How to Use This List (VERY IMPORTANT)
+
+👉 Don’t just read — do this:
+
+Solve each coding question without Google
+Explain answers out loud (like interview)
+Practice whiteboard / paper coding
+🔥 Reality Check (What Most Candidates Miss)
+
+Most people:
+
+Know theory ❌
+Fail in edge cases + explanation ❌
+
+You should:
+
+Explain WHY
+Mention performance + scalability
+Think like senior engineer
