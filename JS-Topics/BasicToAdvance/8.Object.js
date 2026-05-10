@@ -12,7 +12,6 @@
 //   isDeveloper: true
 // };
 
-
 // name, age, isDeveloper → properties
 
 // Values can be any data type
@@ -50,7 +49,6 @@
 // const key = "name";
 // user[key]
 
-
 // ✅ Use bracket notation when key is dynamic or has spaces
 
 // 4️⃣ Adding / Updating / Deleting Properties
@@ -70,7 +68,6 @@
 // };
 
 // user.greet();
-
 
 // 👉 this refers to the current object
 
@@ -111,7 +108,6 @@
 // 9️⃣ Object Comparison (Trick Question)
 // {} === {}        // false
 
-
 // 👉 Objects are compared by reference, not value.
 
 // 🔟 this in Objects (Interview Trap)
@@ -124,20 +120,12 @@
 // obj.arrow();  // undefined
 // obj.normal(); // JS
 
-
 // 👉 Arrow functions don’t have their own this
-
-
-
 
 // | Method            | Can Add | Can Delete | Can Modify |
 // | ----------------- | ------- | ---------- | ---------- |
 // | `Object.freeze()` | ❌       | ❌          | ❌          |
 // | `Object.seal()`   | ❌       | ❌          | ✅          |
-
-
-
-
 
 // 1️⃣2️⃣ Common Interview MCQs
 // const obj = { a: 1 };
@@ -154,20 +142,7 @@
 // obj[1] = "b";
 // console.log(obj["1"]); // b
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ---------------------------------------------------------------------------------------------------------
 
 // 🔥 Advanced JavaScript Object MCQs (Interview Level – Tricky & Conceptual)
 // (Designed for React / Redux / Senior Frontend interviews)
@@ -178,7 +153,6 @@
 // b.x = 2;
 // console.log(a.x);
 
-
 // A. 1
 // B. 2 ✅
 // C. undefined
@@ -188,7 +162,6 @@
 
 // 2️⃣ Object Comparison
 // console.log({} === {});
-
 
 // A. true
 // B. false ✅
@@ -203,7 +176,6 @@
 // obj["true"] = "no";
 // console.log(obj[true]);
 
-
 // A. yes
 // B. no ✅
 // C. undefined
@@ -215,7 +187,6 @@
 // const obj = { a: 1 };
 // delete obj.a;
 // console.log(obj.a);
-
 
 // A. 1
 // B. null
@@ -229,7 +200,6 @@
 // };
 
 // console.log(obj.getName());
-
 
 // A. JS
 // B. undefined ✅
@@ -248,7 +218,6 @@
 
 // console.log(obj.getName());
 
-
 // A. JS ✅
 // B. undefined
 // C. Error
@@ -260,7 +229,6 @@
 // obj.a = 10;
 // console.log(obj.a);
 
-
 // A. 10
 // B. undefined
 // C. 1 ✅
@@ -271,7 +239,6 @@
 // Object.freeze(obj);
 // obj.b = 2;
 // console.log(obj.b);
-
 
 // A. 2
 // B. undefined ✅
@@ -285,7 +252,6 @@
 // delete obj.a;
 // console.log(obj.a);
 
-
 // A. undefined
 // B. 1
 // C. 5 ✅
@@ -294,7 +260,6 @@
 // 🔟 Object Keys Order
 // const obj = { b: 2, a: 1 };
 // console.log(Object.keys(obj));
-
 
 // A. ["a","b"]
 // B. ["b","a"] ✅
@@ -306,7 +271,6 @@
 // 1️⃣1️⃣ Numeric Key Ordering
 // const obj = { 2: "b", 1: "a", c: "x" };
 // console.log(Object.keys(obj));
-
 
 // A. ["2","1","c"]
 // B. ["1","2","c"] ✅
@@ -321,7 +285,6 @@
 // copy.a.x = 10;
 // console.log(obj.a.x);
 
-
 // A. 1
 // B. 10 ✅
 // C. undefined
@@ -333,7 +296,6 @@
 // const c = Object.assign(a, b);
 // console.log(a.x, c.x);
 
-
 // A. 1 2
 // B. 2 2 ✅
 // C. 1 1
@@ -344,7 +306,6 @@
 // const obj = { [key]: 25 };
 // console.log(obj.age);
 
-
 // A. undefined
 // B. Error
 // C. 25 ✅
@@ -353,7 +314,6 @@
 // 1️⃣5️⃣ Destructuring Default Value
 // const { a = 10 } = { a: undefined };
 // console.log(a);
-
 
 // A. undefined
 // B. 10 ✅
@@ -364,7 +324,6 @@
 // const { a = 10 } = { a: null };
 // console.log(a);
 
-
 // A. 10
 // B. undefined
 // C. null ✅
@@ -373,7 +332,6 @@
 // 1️⃣7️⃣ in Operator
 // const obj = { a: 1 };
 // console.log("a" in obj, "toString" in obj);
-
 
 // A. true false
 // B. true true ✅
@@ -386,7 +344,6 @@
 // const obj = {};
 // console.log(obj.__proto__ === Object.prototype);
 
-
 // A. true ✅
 // B. false
 // C. undefined
@@ -395,7 +352,6 @@
 // 1️⃣9️⃣ JSON.stringify Trap
 // const obj = { a: 1, b: undefined };
 // console.log(JSON.stringify(obj));
-
 
 // A. {"a":1,"b":undefined}
 // B. {"a":1,"b":null}
@@ -413,28 +369,12 @@
 // const fn = obj.getName;
 // console.log(fn());
 
-
 // A. JS
 // B. undefined ✅
 // C. Error
 // D. null
 
 // 👉 this lost when method is detached
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 🔥 SUPER-TRICKY JavaScript Object Output Questions
 // (These break even experienced devs – asked in product-company interviews)
@@ -450,7 +390,6 @@
 // ✅ Output
 // 2
 
-
 // 👉 Last key wins
 
 // 2️⃣ Object Key Type Coercion
@@ -463,7 +402,6 @@
 
 // ✅ Output
 // "string one"
-
 
 // 👉 All object keys → string
 
@@ -479,7 +417,6 @@
 
 // ✅ Output
 // { "[object Object]": "second" }
-
 
 // 👉 Objects stringify as keys
 
@@ -497,7 +434,6 @@
 // ✅ Output
 // undefined
 
-
 // 👉 this lost when method is detached
 
 // 5️⃣ Arrow Function Trap
@@ -511,7 +447,6 @@
 // ✅ Output
 // undefined
 
-
 // 👉 Arrow functions don’t bind this
 
 // 6️⃣ Nested Mutation (Shallow Copy)
@@ -524,7 +459,6 @@
 // ✅ Output
 // 10
 
-
 // 👉 Spread is shallow
 
 // 7️⃣ Freeze Illusion
@@ -535,7 +469,6 @@
 
 // ✅ Output
 // 5
-
 
 // 👉 freeze is shallow, nested objects still mutable
 
@@ -562,7 +495,6 @@
 // ✅ Output
 // ["1", "2", "b", "a"]
 
-
 // 👉 Numbers → sorted, strings → insertion order
 
 // 🔟 JSON.stringify Surprise
@@ -577,7 +509,6 @@
 // ✅ Output
 // {"a":1}
 
-
 // 👉 undefined & functions are skipped
 
 // 1️⃣1️⃣ Destructuring Default Trap
@@ -586,7 +517,6 @@
 
 // ✅ Output
 // null
-
 
 // 👉 Defaults apply only to undefined
 
@@ -611,7 +541,6 @@
 
 // ✅ Output
 // 20
-
 
 // 👉 Objects passed by reference
 
@@ -691,21 +620,6 @@
 // ✅ Output
 // true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 8️⃣ Interview Trap Question ⚠️
 // let a = 10;
 
@@ -718,7 +632,6 @@
 
 // ✅ Output
 // 10
-
 
 // 👉 Because value copy is passed
 
@@ -734,7 +647,6 @@
 
 // ✅ Output
 // 2
-
 
 // 👉 Reference is copied, not object
 
@@ -753,7 +665,6 @@
 // 10 === 10        // true
 // {} === {}        // false
 
-
 // 👉 Primitives → value comparison
 // 👉 Objects → reference comparison
 
@@ -762,7 +673,6 @@
 // const newState = state;
 
 // newState.count = 1;
-
 
 // ❌ Mutates original state → BUG
 
