@@ -15,9 +15,6 @@
 // So technically:
 // JavaScript is compiled just before execution (JIT compilation).
 
-
-
-
 // DATATYPES:
 
 // 1. PRIMITIVE DATATYPES:
@@ -42,9 +39,6 @@
 //     f. ERROR
 //     g. MAP
 //     h. SET
-
-
-
 
 // STRING TO NUMBER : ----
 
@@ -86,13 +80,7 @@
 
 // Use Number() or +str, unless you specifically need integer parsing with prefixes — then use parseInt(str, 10).
 
-
-
-
-
-
 //  NUMBER TO STRING : ----
-
 
 // ✅ 1. String() — Clean & Recommended
 // String(123);      // "123"
@@ -101,7 +89,6 @@
 // ✅ 2. .toString()
 // (123).toString();   // "123"
 // (12.5).toString();  // "12.5"
-
 
 // ⚠️ Works only on numbers (not null or undefined)
 
@@ -123,12 +110,6 @@
 
 // Use String(number) or ${number} — they’re clean, simple, and safe.
 
-
-
-
-
-
-
 // 3. How is null different from undefined?
 // Value	Meaning
 // undefined	Variable declared but not assigned
@@ -142,8 +123,6 @@
 // let b = null;
 // console.log(b);  // null
 
-
-
 // 4. Why does typeof null === "object"?
 
 // Because of a bug in the original JavaScript design (1995).
@@ -156,12 +135,9 @@
 // 5. What does typeof NaN return? Why?
 // typeof NaN === "number"
 
-
 // Because NaN is a special numeric value that represents “Not a valid number”.
 
 // Still belongs to the number type.
-
-
 
 // ✅ 2. Type Conversion / Coercion
 // 6. Convert string "123" into a number?
@@ -172,36 +148,22 @@
 // +"123";
 // parseInt("123");
 
-
-
-
 // 7. Difference between Number("123") and parseInt("123abc")?
 // Number("123abc") → NaN
 // parseInt("123abc") → 123
 
-
 // parseInt() stops reading at first non-digit.
 // Number() must convert entire string to a valid number.
-
-
-
-
 
 // 8. What happens?
 // "5" - 2  // 3
 // "5" + 2  // "52"
-
 
 // Explanation:
 
 // - forces numeric conversion → 5 - 2 = 3
 
 // + prefers string concatenation if ANY operand is string → "5" + 2 = "52"
-
-
-
-
-
 
 // 9. What is implicit type coercion?
 
@@ -213,20 +175,10 @@
 // 1 + true    // 2
 // false + 1   // 1
 
-
-
-
-
-
-
-
-
-
 // 10. Output of:
 // true + true       // 2
 // false + 1         // 1
 // "10" * "2"        // 20
-
 
 // Reason:
 
@@ -236,13 +188,6 @@
 
 // * always converts to numbers
 
-
-
-
-
-
-
-
 // ✅ 3. Special Values
 // 11. What is NaN? How to check correctly?
 
@@ -251,17 +196,9 @@
 
 // NaN === NaN  // false
 
-
 // Correct checks:
 
 // Number.isNaN(value);        // Best
-
-
-
-
-
-
-
 
 // 12. What is Infinity? When do you get it?
 
@@ -271,13 +208,6 @@
 
 // 1 / 0          // Infinity
 // Math.pow(10, 400)  // Infinity
-
-
-
-
-
-
-
 
 // 13. What is -0 in JavaScript?
 
@@ -292,23 +222,11 @@
 // 1 / 0   // Infinity
 // 1 / -0  // -Infinity
 
-
-
-
-
-
-
-
 // 14. Why does NaN === NaN return false?
 
 // Because NaN is designed to mean “not equal to anything, including itself.”
 
 // Spec rule.
-
-
-
-
-
 
 // ✅ 4. Objects & References
 // 15. Are arrays primitive or reference types?
@@ -317,12 +235,6 @@
 
 // typeof [] === "object"
 
-
-
-
-
-
-
 // 16. What happens?
 // let a = { x: 1 };
 // let b = a;
@@ -330,15 +242,7 @@
 
 // console.log(a.x);  // 10
 
-
 // Because both a and b reference same object in memory.
-
-
-
-
-
-
-
 
 // 17. Shallow copy vs deep copy?
 // Type	Description
@@ -349,10 +253,116 @@
 
 // let shallow = { ...obj };
 
-
 // Deep:
 
 // let deep = JSON.parse(JSON.stringify(obj));
+
+// This is a common trick for deep copy, but it has several important limitations.
+
+// 🔹 1. Loses Functions
+// const obj = {
+//   name: "Sapta",
+//   greet: function () {
+//     console.log("Hello");
+//   }
+// };
+
+// const copy = JSON.parse(JSON.stringify(obj));
+
+// console.log(copy);
+// Output
+// { name: "Sapta" }
+
+// greet() disappears because JSON cannot store functions.
+
+// 🔹 2. Converts Date to String
+// const obj = {
+//   date: new Date()
+// };
+
+// const copy = JSON.parse(JSON.stringify(obj));
+
+// console.log(copy.date);
+// console.log(typeof copy.date);
+// Output
+// "2026-05-12T10:20:00.000Z"
+// string
+
+// Date becomes a normal string.
+
+// 🔹 3. Removes undefined
+// const obj = {
+//   name: undefined
+// };
+
+// const copy = JSON.parse(JSON.stringify(obj));
+
+// console.log(copy);
+// Output
+// {}
+
+// undefined values are removed.
+
+// 🔹 4. Cannot Handle Circular References
+// const obj = {};
+
+// obj.self = obj;
+
+// JSON.parse(JSON.stringify(obj));
+// Error
+// TypeError: Converting circular structure to JSON
+
+// Because object refers to itself.
+
+// 🔹 5. Loses Map / Set
+// const obj = {
+//   map: new Map([["a", 1]])
+// };
+
+// const copy = JSON.parse(JSON.stringify(obj));
+
+// console.log(copy);
+// Output
+// { map: {} }
+
+// Map and Set become empty objects.
+
+// 🔹 6. Loses Special Values
+// const obj = {
+//   value: Infinity,
+//   notNumber: NaN
+// };
+
+// const copy = JSON.parse(JSON.stringify(obj));
+
+// console.log(copy);
+// Output
+// {
+//   value: null,
+//   notNumber: null
+// }
+// 🔹 7. Prototype Chain is Lost
+// class User {
+//   constructor(name) {
+//     this.name = name;
+//   }
+
+//   greet() {
+//     console.log("Hi");
+//   }
+// }
+
+// const user = new User("Sapta");
+
+// const copy = JSON.parse(JSON.stringify(user));
+
+// console.log(copy instanceof User);
+// Output
+// false
+
+// It becomes a plain object.
+
+// structuredClone() ✅ (Best Modern Way)
 
 // 18. Difference:
 // const a = {};
@@ -360,16 +370,7 @@
 
 // a === b  // false
 
-
 // They are different references.
-
-
-
-
-
-
-
-
 
 // ✅ 5. Advanced Data Types
 // 19. Map vs Object?
@@ -379,23 +380,11 @@
 // Size	map.size	No size property
 // Iteration	Easy	Harder
 
-
-
 // 20. Set vs Array?
 // Set	Array
 // Unique values only	Allows duplicates
 // Faster lookup	Slower lookup
 // No indexing	Indexed
-
-
-
-
-
-
-
-
-
-
 
 // 21. How do Symbols work?
 
@@ -406,18 +395,11 @@
 
 // id1 === id2 // false
 
-
 // Useful for:
 
 // private object properties
 
 // avoiding key collisions
-
-
-
-
-
-
 
 // 22. What is BigInt?
 
@@ -427,34 +409,19 @@
 
 // let big = 12345678901234567890n;
 
-
-
-
-
-
-
 // 23. Why:
 // typeof [] === "object"
 // typeof {} === "object"
 // typeof null === "object"
 
-
 // Because all three use the internal object type tag (0).
 
-
-
-
-
-
-
 // ✅ 6. Trick Questions
-
 
 // 24. Output?
 // [] + []   // ""
 // [] + {}   // "[object Object]"
 // {} + []   // 0   (treated as empty block + array → 0)
-
 
 // 25. Output of typeof:
 // typeof NaN           // "number"
@@ -466,7 +433,6 @@
 // let x;
 // console.log(x++);
 
-
 // x is undefined.
 
 // undefined++ → NaN
@@ -477,7 +443,6 @@
 // 27. What does this return?
 // "5" - "2" + "1"
 
-
 // Step-by-step:
 
 // "5" - "2" → 3
@@ -487,19 +452,6 @@
 // ✔ Output:
 
 // "31"
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // ✅ 1. Primitive vs Reference
 // 1. Why are strings immutable but arrays are mutable?
@@ -512,7 +464,6 @@
 
 // let s = "abc";
 // s[0] = "z";   // No effect
-
 
 // Internally, JS must create a NEW string every time.
 
@@ -580,7 +531,6 @@
 
 // Object.is(0, -0);     // false
 
-
 // Or:
 
 // 1 / -0 === -Infinity  // true
@@ -609,7 +559,6 @@
 // Uses backticks:
 
 // `Hello ${name}`
-
 
 // Features:
 
@@ -705,7 +654,6 @@
 // parseInt("08")     // 8
 // Number("08")       // 8
 
-
 // Modern JS: both same.
 // Older JS (ES3) interpreted leading 0 as octal → NOT anymore.
 
@@ -733,7 +681,6 @@
 // const a = { x: 1 };
 // const b = { x: 1 };
 // a == b  // false
-
 
 // Different references in memory.
 
@@ -774,7 +721,6 @@
 
 // String(Symbol("id"))
 
-
 // You CANNOT convert to number → TypeError.
 
 // 28. Can BigInt be used with numbers?
@@ -782,7 +728,6 @@
 // No.
 
 // 1n + 1   // TypeError
-
 
 // Must convert manually.
 
@@ -798,12 +743,10 @@
 // 30. typeof null
 // typeof null === "object"
 
-
 // Because of a historical bug.
 
 // 31. typeof NaN
 // "number"
-
 
 // Because NaN is a special numeric value.
 
@@ -832,7 +775,6 @@
 // So effectively:
 
 // +[]   // numeric coercion
-
 
 // [] → "" → 0
 
