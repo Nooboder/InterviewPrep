@@ -1,22 +1,10 @@
 // String basically indexed
 
-
 // console.log("Hello"[0]) // H
 
-// console.log("Hello"[5]) // undefined 
-
-
-
-
-
-
-
-
-
+// console.log("Hello"[5]) // undefined
 
 // 📝 JavaScript String Methods & Properties Table
-
-
 
 // | **Category**          | **Method / Property**        | **Description**                 | **Example**                   | **Output**      |
 // | --------------------- | ---------------------------- | ------------------------------- | ----------------------------- | --------------- |
@@ -57,10 +45,6 @@
 // |                       | `parseFloat(str)`            | Convert string to float         | `parseFloat("123.45")`        | `123.45`        |
 // | **Template Literals** | ``                           | Multi-line + expressions        | `` `Hello ${name}` ``         | `"Hello John"`  |
 
-
-
-
-
 // ✅ Quick Tips
 
 // Strings are immutable → all methods return new strings.
@@ -71,17 +55,175 @@
 
 // Template literals are modern and interview favorite for multi-line and interpolation.
 
+// slice() vs splice() in JavaScript
 
+// | Feature                 | `slice()`             | `splice()`          |
+// | ----------------------- | --------------------- | ------------------- |
+// | Changes original array? | ❌ No                  | ✅ Yes               |
+// | Return value            | New array             | Removed elements    |
+// | Purpose                 | Copy/extract elements | Add/remove elements |
+// | Original array safe?    | ✅ Yes                 | ❌ Modified          |
 
+// slice() → non-mutating
+// splice() → mutating
 
+// 1. slice()
 
+// Used to copy or extract part of an array.
 
+// Syntax
+// array.slice(start, end)
+// start → starting index
+// end → ending index (not included)
+// Example
+// const arr = [1, 2, 3, 4, 5];
 
+// const result = arr.slice(1, 4);
 
+// console.log(result);
+// console.log(arr);
 
+// Output:
 
+// [2, 3, 4]
+// [1, 2, 3, 4, 5]
+// Important
+// slice() DOES NOT change original array
 
+// It creates a new array.
 
+// Visualization
+// Index:   0  1  2  3  4
+// Array:  [1, 2, 3, 4, 5]
+//              ↑     ↑
+//           start   end
+
+// End index excluded.
+
+// So:
+
+// slice(1,4)
+
+// returns:
+
+// [2,3,4]
+// 2. splice()
+
+// Used to:
+
+// remove elements
+// add elements
+// replace elements
+
+// AND it modifies original array.
+
+// Syntax
+// array.splice(start, deleteCount, item1, item2)
+// Remove Example
+// const arr = [1, 2, 3, 4, 5];
+
+// const removed = arr.splice(1, 2);
+
+// console.log(removed);
+// console.log(arr);
+
+// Output:
+
+// [2, 3]
+// [1, 4, 5]
+// Explanation
+// splice(1,2)
+
+// means:
+
+// Start at index 1
+// Delete 2 elements
+
+// Removed:
+
+// [2,3]
+
+// Original array changed to:
+
+// [1,4,5]
+// Add Example
+// const arr = [1, 2, 5];
+
+// arr.splice(2, 0, 3, 4);
+
+// console.log(arr);
+
+// Output:
+
+// [1, 2, 3, 4, 5]
+// Explanation
+// splice(2, 0, 3, 4)
+
+// means:
+
+// Start at index 2
+// Delete 0 items
+// Insert 3 and 4
+// Replace Example
+// const arr = [1, 2, 3, 4];
+
+// arr.splice(1, 2, 8, 9);
+
+// console.log(arr);
+
+// Output:
+
+// [1, 8, 9, 4]
+// Explanation
+// Start at index 1
+// Remove 2 items → [2,3]
+// Insert 8 and 9
+// Memory Trick
+// slice
+
+// Think:
+
+// slice = cut piece
+
+// Original pizza still exists.
+
+// splice
+
+// Think:
+
+// splice = surgery
+
+// Original array changes permanently.
+
+// Interview Difference
+// slice() → non-mutating
+// splice() → mutating
+
+// This is the main answer interviewers expect.
+
+// Quick Example Together
+// const arr = [1,2,3,4,5];
+
+// console.log(arr.slice(1,3));
+
+// Output:
+
+// [2,3]
+
+// Original:
+
+// [1,2,3,4,5]
+// const arr2 = [1,2,3,4,5];
+
+// console.log(arr2.splice(1,3));
+
+// Output:
+
+// [2,3,4]
+
+// Original becomes:
+
+// [1,5]
 
 // Tricky String Questions in JavaScript
 
@@ -91,7 +233,6 @@
 // let b = new String("hello");
 // console.log(a == b);  // true
 // console.log(a === b); // false
-
 
 // == does type coercion, so primitive string and object string are equal.
 
@@ -103,14 +244,12 @@
 // str[0] = "H";
 // console.log(str); // "hello"
 
-
 // Strings cannot be modified in-place. Any "modification" creates a new string.
 
 // Type Coercion with + and -
 
 // console.log("5" + 1); // "51"
 // console.log("5" - 1); // 4
-
 
 // + concatenates if one operand is a string.
 
@@ -123,14 +262,12 @@
 // console.log("abc".split());       // ["abc"]
 // console.log("abc".split("", 2));  // ["a", "b"]
 
-
 // split behaves differently based on separator and limit.
 
 // Template Literals with Expressions
 
 // let a = 5, b = 10;
 // console.log(`${a} + ${b} = ${a + b}`); // "5 + 10 = 15"
-
 
 // Everything inside ${} is evaluated, not treated as string.
 
@@ -139,7 +276,6 @@
 // let str = "  hello  ";
 // console.log(str.trimStart()); // "hello  "
 // console.log(str.trimEnd());   // "  hello"
-
 
 // .trimStart() and .trimEnd() trim only one side.
 
@@ -151,7 +287,6 @@
 // console.log(str.indexOf("x"));      // -1
 // console.log(str.includes("x"));     // false
 
-
 // .indexOf returns index or -1, .includes returns boolean.
 
 // String slice vs substring
@@ -161,7 +296,6 @@
 // console.log(str.substring(1, 4)); // "ell"
 // console.log(str.slice(-3));       // "llo"
 // console.log(str.substring(-3));   // "hello" (- treated as 0)
-
 
 // slice supports negative indices; substring does not.
 
@@ -173,7 +307,6 @@
 // console.log(str[10]);       // undefined
 // console.log(str.charAt(10));// ""
 
-
 // charAt returns empty string if out of bounds, [] returns undefined.
 
 // Tricky Palindrome Check (Case & Spaces)
@@ -183,7 +316,6 @@
 // let isPalindrome = formatted === formatted.split("").reverse().join("");
 // console.log(isPalindrome); // true
 
-
 // You need normalize the string before checking palindrome.
 
 // String repeat Edge Case
@@ -192,7 +324,6 @@
 // console.log("abc".repeat(2));   // "abcabc"
 // console.log("abc".repeat(-1));  // RangeError
 
-
 // Negative repeat values throw an error.
 
 // Empty String Checks
@@ -200,6 +331,5 @@
 // let str = "";
 // console.log(str == false);  // true
 // console.log(str === false); // false
-
 
 // Empty string is falsy, but type matters with ===.
