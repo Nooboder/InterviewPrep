@@ -5,17 +5,21 @@
 ```
 React-Interview-Prep/
 │
-├── 📖 MAIN REACT FOLDER
+├── 📖 MAIN REACT FOLDER (Core)
 │   ├── README.md
 │   ├── STUDY_GUIDE.md
-│   ├── 1-React-Core-Concepts.js
-│   ├── 2-Performance-Optimization.js
-│   ├── 3-Advanced-Patterns.js
-│   ├── 4-State-Management.js
-│   ├── 5-Interview-Questions-Answers.md (50+ Q&A)
-│   ├── 6-Coding-Challenges.js (6 problems)
-│   ├── 7-System-Design.md
-│   └── 8-Best-Practices-Reference.js
+│   ├── 1-React-Core-Concepts.js          ← Fiber, Reconciliation, Concurrent Rendering
+│   ├── 2-Performance-Optimization.js     ← Code Splitting, Memoization, Profiling
+│   ├── 3-Advanced-Patterns.js            ← Custom Hooks, HOC, Render Props, Compound
+│   ├── 4-State-Management.js             ← Context, Redux, Zustand, Recoil
+│   ├── 5-Interview-Questions-Answers.md  ← 50+ Q&A (Medium to Hard)
+│   ├── 6-Coding-Challenges.js            ← 6 real-world problems
+│   ├── 7-System-Design.md                ← Architecture & Design Patterns
+│   ├── 8-Best-Practices-Reference.js     ← Quick reference
+│   ├── 9-Accessibility-a11y.js           ★ NEW: WCAG, ARIA, Keyboard Nav, Focus, Screen Readers
+│   ├── 10-Security.js                    ★ NEW: XSS, CSRF, CORS, Token Storage, CSP
+│   ├── 11-React-18-19-Latest.js          ★ NEW: Server Components, use(), useActionState, Compiler
+│   └── 12-Forms-Validation.js            ★ NEW: React Hook Form, Zod, Yup, Multi-step, File Upload
 │
 ├── 🧪 JEST-TESTING/ (25 Q&A)
 │   └── 1-Jest-Fundamentals.js
@@ -57,13 +61,54 @@ React-Interview-Prep/
 │       - Docker Integration
 │       - Monitoring & Rollback
 │
-└── 🐳 DOCKER/ (25+ Q&A)
-    └── 1-Docker-Complete.js
-        - Docker Fundamentals
-        - Dockerfile & Building
-        - Networking & Volumes
-        - Production Best Practices
-        - Kubernetes Basics
+├── 🐳 DOCKER/ (25+ Q&A)
+│   └── 1-Docker-Complete.js
+│       - Docker Fundamentals
+│       - Dockerfile & Building
+│       - Networking & Volumes
+│       - Production Best Practices
+│       - Kubernetes Basics
+│
+├── ⚡ NEXT-JS/                            ★ NEW
+│   └── 1-NextJS-Complete.js
+│       - Pages Router vs App Router
+│       - SSR / SSG / ISR / CSR deep dive
+│       - Server Components & Server Actions
+│       - Route Handlers, Middleware
+│       - Caching (4 layers), generateStaticParams
+│       - next/image, next/font, Metadata API
+│       - Authentication patterns
+│
+├── 🛣️ REACT-ROUTER/                       ★ NEW
+│   └── 1-React-Router-Complete.js
+│       - v5 → v6 breaking changes
+│       - Nested Routes & Outlet
+│       - useNavigate, useParams, useSearchParams
+│       - Protected routes (auth guards)
+│       - Lazy loading routes
+│       - Data Router: loaders & actions (v6.4+)
+│       - useRoutes, BrowserRouter vs HashRouter
+│
+├── 🎨 CSS-STYLING/                        ★ NEW
+│   └── 1-CSS-Styling-Complete.js
+│       - CSS Modules deep dive
+│       - Styled Components & theming
+│       - Tailwind CSS in React (cn utility)
+│       - Dark mode implementation
+│       - Responsive design patterns
+│       - Animations (CSS + Framer Motion)
+│       - Performance: zero-runtime CSS
+│
+└── 🔗 GRAPHQL/                            ★ NEW
+    └── 1-GraphQL-React-Complete.js
+        - Apollo Client setup & InMemoryCache
+        - useQuery, useMutation, useLazyQuery
+        - Optimistic UI updates
+        - Cache normalization & eviction
+        - GraphQL Subscriptions (real-time)
+        - Fragments & co-location pattern
+        - TanStack Query + GraphQL
+        - urql as lightweight alternative
 ```
 
 ---
@@ -85,7 +130,15 @@ React-Interview-Prep/
 | **TanStack Query** | **25** | Medium | 2-3 hours |
 | **CI/CD** | **25** | Medium | 2-3 hours |
 | **Docker** | **25+** | Medium | 2-3 hours |
-| **TOTAL Q&A** | **200+** | Easy to Hard | 3-4 weeks |
+| **★ Accessibility (a11y)** | **15+** | Medium-Hard | 2-3 hours |
+| **★ Security in React** | **11+** | Hard | 2-3 hours |
+| **★ React 18 & 19** | **8+ rapid-fire** | Hard | 2-3 hours |
+| **★ Forms & Validation** | **8+** | Medium-Hard | 2-3 hours |
+| **★ Next.js** | **12+ rapid-fire** | Hard | 3-4 hours |
+| **★ React Router v6** | **8+** | Medium | 2 hours |
+| **★ CSS & Styling** | **8+** | Medium | 2 hours |
+| **★ GraphQL + React** | **6+** | Hard | 3 hours |
+| **TOTAL Q&A** | **350+** | Easy to Hard | 6-8 weeks |
 
 ---
 
@@ -442,12 +495,19 @@ Week 5+: Can solve problems and discuss trade-offs
 > **You have everything you need. Now execute.**
 
 This preparation material covers:
-- ✅ 200+ interview questions
+- ✅ 350+ interview questions
 - ✅ 6 real coding challenges
 - ✅ 7 system design scenarios
 - ✅ Production best practices
 - ✅ Big4 & MNC focus
 - ✅ Easy to Hard difficulty levels
+- ✅ Accessibility (WCAG 2.1, ARIA)
+- ✅ Security (XSS, CSRF, CORS, Auth)
+- ✅ React 18 & 19 latest features
+- ✅ Next.js App Router (full coverage)
+- ✅ React Router v6 (Data Router)
+- ✅ CSS/Styling (Tailwind, Styled Components, CSS Modules)
+- ✅ GraphQL (Apollo Client, subscriptions, caching)
 
 **Your job:** Go through systematically, practice consistently, and explain confidently.
 
