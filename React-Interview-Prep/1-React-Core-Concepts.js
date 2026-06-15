@@ -5,9 +5,14 @@
 /**
  * 1. REACT FIBER ARCHITECTURE
  * - React Fiber is the new reconciliation engine introduced in React 16
- * - Enables incremental rendering: split rendering work into chunks
- * - Can pause, abort, or reuse work
- * - Supports priority levels for different types of work
+ * - Enables incremental rendering: split rendering work into chunks and spread it out over multiple frames
+ * - Can pause, abort, or reuse work as new updates come in
+ * - Supports priority levels for different types of updates (e.g., user input vs. data fetching)
+ * - Fiber nodes represent each element in the virtual DOM tree
+ * - Each fiber node contains information about the component, its state, and its relationship to other fibers
+ * - Fiber architecture allows React to be more responsive and efficient, especially in complex applications with many components
+ * - Key concepts: work loop, scheduler, effect tags, and fiber tree
+ * - Fiber nodes have properties like type, props, state, parent, child, sibling, alternate (for previous fiber), and effectTag (for tracking changes)
  */
 
 // Understanding Fiber Structure
@@ -86,6 +91,7 @@ function AutomaticBatching() {
  * - Setup runs after render
  * - Cleanup runs before unmount or next effect
  * - Dependency array controls when effect runs
+ * - Common pitfalls: missing dependencies, stale closures, and infinite loops
  */
 
 function AdvancedEffects() {
