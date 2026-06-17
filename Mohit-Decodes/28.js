@@ -12,3 +12,8 @@ const arr = [
 ];
 
 console.log(Object.fromEntries(arr));
+
+
+
+// Object → Array of key-value pairs using Object.entries()
+// Array of key-value pairs → Object using Object.fromEntries()
