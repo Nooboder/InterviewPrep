@@ -401,3 +401,71 @@ export {
   useFetch,
   ProfiledApp,
 };
+
+
+
+
+
+
+// React Performance Optimization — Interview Theory
+// The Core Idea
+// React re-renders components on every state/prop change. Performance optimization = reduce unnecessary work (renders, network calls, DOM updates).
+
+// 1. Code Splitting & Lazy Loading
+// What: Break your JS bundle into chunks. Load code only when needed.
+// How: React.lazy() + <Suspense> wraps dynamically imported components. Use at route level.
+// Why it matters: Reduces initial bundle size → improves FCP/LCP (user sees content faster).
+
+// "Instead of loading all 300KB of JS upfront, each route loads its own chunk on demand."
+
+// 2. Virtualization (Large Lists)
+// What: Render only the visible items in a list, not all 10,000.
+// How: react-window's FixedSizeList — or custom: track scrollTop, calculate startIndex/endIndex, render only that slice, push content down with translateY.
+// Why: DOM nodes are expensive. Rendering 10k <div>s kills performance.
+
+// "Only ~20 items exist in DOM at any time, regardless of list size."
+
+// 3. Image Optimization
+// Three levers:
+
+// loading="lazy" — browser defers off-screen images
+// <picture> + srcset — serve correct size per screen width
+// WebP format — 25-35% smaller than JPEG/PNG
+// 4. React.memo
+// What: Wraps a component so it skips re-render if props haven't changed (shallow compare by default).
+// Custom comparison: Pass a second function (prevProps, nextProps) => boolean — return true to skip render.
+// Caveat: Memo itself has overhead. Only use when re-render is genuinely expensive or frequent.
+
+// 5. useMemo
+// What: Caches a computed value between renders.
+// Rule: Use when the calculation is expensive (filtering/sorting large arrays).
+// Dependency array controls when it recalculates.
+
+// useMemo = memoized value | useCallback = memoized function
+
+// 6. Intersection Observer
+// What: Browser API that fires a callback when an element enters/exits the viewport.
+// Better than: scroll event listeners (those run on every scroll, blocking main thread).
+// Pattern: Attach observer in useEffect, call unobserve once visible, cleanup with observer.disconnect().
+
+// 7. Request Deduplication & Caching
+// Problem: Multiple components requesting the same URL simultaneously → 3 identical API calls.
+// Solution: RequestCache class using two Maps:
+
+// cache — stores resolved data
+// pending — stores in-flight promises
+// If a request for URL X is pending, return the same promise instead of making a new fetch.
+
+// 8. React Profiler
+// What: <Profiler id="..." onRender={cb}> wraps any component tree.
+// Callback gives you: actualDuration (render time), phase (mount vs update).
+// Also: React DevTools Profiler tab → flame graph showing which components are slow.
+
+// Quick-Fire Interview Answers
+// Question	One-line answer
+// 10,000 item list?	Virtualization — only render visible rows
+// When to use memo?	Props change rarely + render is expensive
+// useMemo vs useCallback?	Value vs function
+// Code splitting?	React.lazy + Suspense, splits bundle by route
+// Request deduplication?	Return pending promise instead of new fetch
+// Profiling?	React DevTools Profiler or <Profiler> component
