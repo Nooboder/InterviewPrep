@@ -17,3 +17,28 @@ function firstNonRepeatingCharacter(str) {
 
 console.log(firstNonRepeatingCharacter("hello")); // Output: "h"
 console.log(firstNonRepeatingCharacter("aabbcc")); // Output: undefined (no non-repeating character)
+
+
+// Optimized version using a frequency map
+
+
+function firstNonRepeatingCharacter(str) {
+  const freq = {};
+
+  // Count frequency of each character
+  for (const ch of str) {
+    freq[ch] = (freq[ch] || 0) + 1;
+  }
+
+  // Find the first character with frequency 1
+  for (const ch of str) {
+    if (freq[ch] === 1) {
+      return ch;
+    }
+  }
+
+  return undefined;
+}
+
+console.log(firstNonRepeatingCharacter("hello"));  // h
+console.log(firstNonRepeatingCharacter("aabbcc")); // undefined
