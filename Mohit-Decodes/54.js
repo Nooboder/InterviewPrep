@@ -14,3 +14,30 @@ function countVowels(str) {
 const inputString = "Hello World!";
 const vowelCount = countVowels(inputString);
 console.log(`Number of vowels in "${inputString}": ${vowelCount}`);
+
+
+// 2.
+
+
+
+function countVowels(str) {
+  let count = 0;
+  const ch = str.toLowerCase()
+  for (let i of ch) {
+    if (i === "a" ||
+      i === "e" ||
+      i === "i" ||
+      i === "o" ||
+      i === "u") {
+      count++
+    }
+  }
+
+  return count
+}
+
+
+
+
+const inputString = "Hello World!";
+console.log(countVowels(inputString));
