@@ -65,7 +65,7 @@ var obj = {
 // console.log(obj.prop.getFullName());  //  "Suraj"
 
 const getName = obj.prop.getFullName;
-// console.log(getName())   // Bittu
+// console.log(getName())   // undefined
 
 // Q-8
 // How do you check if a key is available in an object in JavaScript ?
